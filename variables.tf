@@ -36,6 +36,12 @@ variable "rotation_days" {
   default     = 730
 }
 
+variable "rotation_window_days" {
+  type = number
+  description = "Days to begin recreating secret within if Terraform is run during this time."
+  default = 365
+}
+
 variable "custom_permissions" {
   type        = set(string)
   description = "Custom permissions to use instead of local.permissions"

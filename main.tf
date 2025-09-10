@@ -77,14 +77,26 @@ resource "azuread_application" "m365_integration" {
   web {
     redirect_uris = [var.redirect_uri]
   }
-  password {
-    display_name = "Home Assistant M365"
-    start_date   = time_rotating.m365_integration.id
-    end_date     = time_rotating.m365_integration.rotation_rfc3339
-  }
 }
 
 resource "time_rotating" "m365_integration" {
-  # TODO: trigger recreate if within half of the time to refresh
-  rotation_days = var.rotation_days 
+  rotation_days = var.rotation_days
+}
+
+locals {
+  days_since_password_creation = (timestamp() - time_rotating.m365_integration.unix) / 86400
+  refresh_after_days           = var.rotation_days - var.rotation_window_days
+}
+
+resource "azuread_application_password" "m365_integration" {
+  application_id = azuread_application.m365_integration.id
+  display_name   = "Home Assistant M365"
+  start_date     = time_rotating.m365_integration.id
+  end_date       = time_rotating.m365_integration.rotation_rfc3339
+
+  rotate_when_changed = {
+    refresh_trigger = floor(
+      local.days_since_password_creation >= local.refresh_after_days
+    ) ? "refresh" : "wait"
+  }
 }
