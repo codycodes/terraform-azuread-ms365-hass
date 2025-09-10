@@ -9,18 +9,18 @@ variable "sign_in_audience" {
     For more info: https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation
   EOT
   default     = "AzureADandPersonalMicrosoftAccount"
-  # TODO: validation for Do not use the following:
-  #
-  # Accounts in this organizational directory only (xxxxx only - Single tenant)
-  # Personal Microsoft accounts only
+  validation {
+    condition     = !contains(var.sign_in_audience, ["AzureADMyOrg", "PersonalMicrosoftAccount"])
+    error_message = "var.sign_in_audience value of ${var.sign_in_audience} is not compatible with the M365 custom component integration"
+  }
 }
 
 variable "selected_service" {
   type        = string
-  description = "Service to select for application configuration (todo, mail, calendar, teams)"
+  description = "Service to select for application configuration (todo, mail, calendar, teams, contacts)"
   validation {
-    condition     = contains(["todo", "mail", "calendar", "teams"], var.selected_service)
-    error_message = "selected_service Must be one of (todo, mail, calendar, teams)"
+    condition     = contains(["todo", "mail", "calendar", "teams", "contacts"], var.selected_service)
+    error_message = "selected_service Must be one of (todo, mail, calendar, teams, contacts)"
   }
 }
 
@@ -32,7 +32,18 @@ variable "redirect_uri" {
 
 variable "rotation_days" {
   type = number
-  # TODO: trigger recreate if within half of the time to refresh
   description = "Days until secret needs to be recreated. Note: the default of this value is its current maximum value."
   default     = 730
+}
+
+variable "custom_permissions" {
+  type        = set(string)
+  description = "Custom permissions to use instead of local.permissions"
+  default     = null
+}
+
+variable "owners" {
+  type        = set(string)
+  description = "Additional owners for the AzureAD application created"
+  default     = []
 }
