@@ -79,24 +79,29 @@ resource "azuread_application" "m365_integration" {
   }
 }
 
-resource "time_rotating" "m365_integration" {
-  rotation_days = var.rotation_days
+locals {
+  # Password rotation should occur prior to its expiration.
+  # This logic allows for a "rotation window" in which if Terraform
+  # is run it will rotate the password (so long as it's within the window).
+  # This allows a grace period to generate and add a new secret proactively.
+  refresh_after_days = var.rotation_days - var.rotation_window_days
 }
 
-locals {
-  days_since_password_creation = (timestamp() - time_rotating.m365_integration.unix) / 86400
-  refresh_after_days           = var.rotation_days - var.rotation_window_days
+resource "time_rotating" "m365_integration_refresh_window" {
+  rotation_days = local.refresh_after_days
+}
+
+resource "time_rotating" "m365_integration_token_expiry" {
+  rotation_days = var.rotation_days
 }
 
 resource "azuread_application_password" "m365_integration" {
   application_id = azuread_application.m365_integration.id
   display_name   = "Home Assistant M365"
-  start_date     = time_rotating.m365_integration.id
-  end_date       = time_rotating.m365_integration.rotation_rfc3339
+  start_date     = time_rotating.m365_integration_token_expiry.rfc3339
+  end_date       = time_rotating.m365_integration_token_expiry.rotation_rfc3339
 
   rotate_when_changed = {
-    refresh_trigger = floor(
-      local.days_since_password_creation >= local.refresh_after_days
-    ) ? "refresh" : "wait"
+    time_rotation = time_rotating.m365_integration_refresh_window.rfc3339
   }
 }
