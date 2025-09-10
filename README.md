@@ -1,2 +1,2 @@
 # terraform-azuread-ms365-hass
-Infrastructure for configuring MS365 services from home assistant - run it right from the cloud shell in Azure!
+Terraform module for required infra deployment for [@RogerSelwyn](https://github.com/RogerSelwyn)'s [MS365 integrations for Home Assistant](https://rogerselwyn.github.io/MS365-ToDo/) - run it locally (free!) or right from the cloud shell in Azure (no installs needed)!
