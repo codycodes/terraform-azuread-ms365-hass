@@ -10,7 +10,7 @@ variable "sign_in_audience" {
   EOT
   default     = "AzureADandPersonalMicrosoftAccount"
   validation {
-    condition     = !contains(var.sign_in_audience, ["AzureADMyOrg", "PersonalMicrosoftAccount"])
+    condition     = !contains(["AzureADMyOrg", "PersonalMicrosoftAccount"], var.sign_in_audience)
     error_message = "var.sign_in_audience value of ${var.sign_in_audience} is not compatible with the M365 custom component integration"
   }
 }
