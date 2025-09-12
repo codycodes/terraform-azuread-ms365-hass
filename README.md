@@ -1,8 +1,7 @@
 # terraform-azuread-ms365-hass
 
-> Infrastructure as Code for @RogerSelwyn's MS365 Home Assistant integrations - deploy from Azure Cloud Shell or locally!
+> Infrastructure as Code to assist with setup for @RogerSelwyn's MS365 Home Assistant integrations - deploy from Azure Cloud Shell or locally!
 
-This Terraform module automates the Azure AD application registration and configuration required for Roger Selwyn's comprehensive Microsoft 365 Home Assistant integration suite, eliminating manual setup complexity and enabling reproducible deployments.
 
 > [!NOTE]
 > **Cost Disclaimer**
@@ -11,7 +10,7 @@ This Terraform module automates the Azure AD application registration and config
 > 
 > **The maintainers of this module are not responsible for any Azure costs incurred by using this Terraform configuration.** Please review your Azure subscription billing and Azure AD pricing before deployment. Monitor your Azure consumption through the Azure portal.
 
-✨ Features
+## ✨ Features
 
 - ⚡ **Minimal Setup** - Single `selected_service` parameter configures appropriate permissions automatically
 - 🚀 **Multiple Deployment Options** - Deploy directly from Azure Cloud Shell with zero local installations or do it locally for free
