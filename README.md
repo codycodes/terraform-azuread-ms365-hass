@@ -54,16 +54,26 @@ Start by clicking this button or link to [Azure Cloud Shell](https://shell.azure
 #### Option 2: Locally Installed (free)
 
 <!-- TODO -->
-* terraform
-* az
-* git (not needed but helpful)
+Download the following tools and make them accessible to your shell:
 
+- [terraform](https://developer.hashicorp.com/terraform/install) (>= 1.9)
+- [az](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+- git (helpful, but you could also copy a zip of the files or copy/paste if needed)
+
+Run the following command & follow steps as needed to auth to Azure
+
+> [!NOTE]
+> If you are using a sovereign cloud, you may need to run `az cloud set -n NameOfCloud` as referenced [here](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/sovereign-clouds).
+
+```shell
+az login
+```
 
 #### Shared Setup Steps
 
 ```shell
+# this is just an easy way to fetch the code to bootstrap using the module - you can also check the examples folder on this repo if you prefer
 git clone https://github.com/codycodes/terraform-azuread-ms365-hass.git
-
 
 # choose which template you want to use from the examples directory to a directory of your choosing
 cp terraform-azuread-ms365-hass/examples/single_service .
@@ -74,7 +84,7 @@ az login # only needs to be run when *not* using Azure Cloud Shell
 az account show --query tenantId -o tsv
 ```
 
-Create a new file and add the following to it (updating selected_service if needed):
+Create a new file in the same directory and add the following to it (updating `selected_service` if needed):
 
 ```hcl
 tenant_id        = "tenant-id-from-az-command"
@@ -83,9 +93,11 @@ selected_service = "todo"
 
 Save the file as `ms365.tfvars`
 
-After confirming, run the following command to create your infra:
+After confirming, run the following commands to create your infra:
 
 ```shell
+terraform init
+
 terraform apply -var-file="ms365.tfvars" -auto-approve
 ```
 
