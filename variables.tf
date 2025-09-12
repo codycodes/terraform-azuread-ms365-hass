@@ -25,6 +25,7 @@ variable "selected_service" {
 }
 
 variable "redirect_uri" {
+  # TODO: make this a list!
   type        = string
   description = "Configured Azure Cloud used for redirecting to auth with Home Assistant integration"
   default     = "https://login.microsoftonline.com/common/oauth2/nativeclient"
