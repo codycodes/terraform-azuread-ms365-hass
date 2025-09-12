@@ -97,4 +97,7 @@ terraform output client_secret
 
 You can now follow the instructions on the [Authentication](https://rogerselwyn.github.io/MS365-ToDo/authentication.html) page of your respective integration(s) to set them up in Home Assistant.
 
+> [!TIP]
+> If any changes are needed (e.g. adding to `redirect_uris`, simply runn the `terraform apply` command again after updating the relevant `.tf` files)
+
 Happy Automating! 🤖
