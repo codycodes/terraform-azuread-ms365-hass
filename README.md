@@ -4,7 +4,9 @@
 
 This Terraform module automates the Azure AD application registration and configuration required for Roger Selwyn's comprehensive Microsoft 365 Home Assistant integration suite, eliminating manual setup complexity and enabling reproducible deployments.
 
-> [!NOTE] Cost Disclaimer
+> [!NOTE]
+> **Cost Disclaimer**
+>
 > This module creates Azure AD resources that may incur costs depending on your Azure subscription and licensing. While Azure AD Basic features are typically included with most subscriptions, premium features, API call volumes, or specific tenant configurations might result in charges.
 > 
 > **The maintainers of this module are not responsible for any Azure costs incurred by using this Terraform configuration.** Please review your Azure subscription billing and Azure AD pricing before deployment. Monitor your Azure consumption through the Azure portal.
@@ -93,4 +95,6 @@ To fetch the client secret you can run:
 terraform output client_secret
 ```
 
-You can now follow the instructions on the [Authentication](https://rogerselwyn.github.io/MS365-ToDo/authentication.html) page of your respective integration(s) to set them up in Home Assistant. Happy Automating! 🤖
+You can now follow the instructions on the [Authentication](https://rogerselwyn.github.io/MS365-ToDo/authentication.html) page of your respective integration(s) to set them up in Home Assistant.
+
+Happy Automating! 🤖
