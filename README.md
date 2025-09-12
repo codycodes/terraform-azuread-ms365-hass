@@ -33,7 +33,7 @@ module "ms365_hass_calendar" {
 }
 ```
 
-Please see the [examples](./examples) folder for more configurations.
+Please see the [examples](./examples) folder for more configurations, or take a look at the [variables](./variables.tf) page to see the inputs supported by this module.
 
 ### Setup
 
