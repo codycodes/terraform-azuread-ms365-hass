@@ -4,7 +4,7 @@ output "client_id" {
 
 output "client_secret" {
   sensitive = true
-  value     = azuread_application.m365_integration.password[*].value
+  value     = azuread_application_password.m365_integration[*].value
 }
 
 output "disclaimer" {
