@@ -24,11 +24,10 @@ variable "selected_service" {
   }
 }
 
-variable "redirect_uri" {
-  # TODO: make this a list!
-  type        = string
-  description = "Configured Azure Cloud used for redirecting to auth with Home Assistant integration"
-  default     = "https://login.microsoftonline.com/common/oauth2/nativeclient"
+variable "redirect_uris" {
+  type        = list(string)
+  description = "Configured AzureAD URLs used for redirecting to auth with Home Assistant integration"
+  default     = ["https://login.microsoftonline.com/common/oauth2/nativeclient"]
 }
 
 variable "rotation_days" {

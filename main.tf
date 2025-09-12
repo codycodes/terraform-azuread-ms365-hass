@@ -75,7 +75,7 @@ resource "azuread_application" "m365_integration" {
     }
   }
   web {
-    redirect_uris = [var.redirect_uri]
+    redirect_uris = var.redirect_uris
   }
 }
 
