@@ -17,7 +17,7 @@
 - 🔄 **Automatic Secret Rotation** - Built-in credential rotation with configurable windows
 - 🔍 **Transparent Configuration** - All permissions and settings clearly documented with Microsoft Graph IDs
 - 🎯 **Service-Specific Apps** - Creates focused applications per MS365 integration (calendar, mail, todo, teams, contacts) that can be managed from a single command!
-- 🔧 **Customizable Inputs** - Override default permissions with custom Microsoft Graph scopes or set additional Owners for the AzureAD app
+- 🔧 **Customizable Inputs** - Add custom redirect URIs as needed, set additional Owners for the AzureAD app, or override default permissions with custom Microsoft Graph scopes entirely
 
 ## Quick Start
 
