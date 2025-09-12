@@ -100,4 +100,10 @@ You can now follow the instructions on the [Authentication](https://rogerselwyn.
 > [!TIP]
 > If any changes are needed (e.g. adding to `redirect_uris`, simply runn the `terraform apply` command again after updating the relevant `.tf` files)
 
+## FAQ
+
+### How About Auto-Rotation?
+
+<!-- TODO -->
+
 Happy Automating! 🤖
