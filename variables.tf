@@ -1,5 +1,6 @@
 variable "tenant_id" {
-  type = string
+  type    = string
+  default = null
 }
 
 variable "sign_in_audience" {
@@ -20,7 +21,7 @@ variable "selected_service" {
   description = "Service to select for application configuration (todo, mail, calendar, teams, contacts)"
   validation {
     condition     = contains(["todo", "mail", "calendar", "teams", "contacts"], var.selected_service)
-    error_message = "selected_service Must be one of (todo, mail, calendar, teams, contacts)"
+    error_message = "selected_service Must be one of: todo, mail, calendar, teams, contacts"
   }
 }
 

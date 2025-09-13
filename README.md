@@ -26,8 +26,7 @@
 ```hcl
 module "ms365_hass_calendar" {
   source = "codycodes/ms365-hass/azuread"
-  
-  tenant_id        = "your-tenant-id"
+
   selected_service = "calendar"
 }
 ```
@@ -46,7 +45,6 @@ You can choose to set this up in either Azure Cloud Shell (easiest, but may have
 Start by clicking this button or link to [Azure Cloud Shell](https://shell.azure.com)
 
 [![Launch Azure Cloud Shell](https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com)
-
 
 **Continue with [Shared Setup Steps](#shared-setup-steps) below**
 
@@ -78,19 +76,18 @@ git clone https://github.com/codycodes/terraform-azuread-ms365-hass.git
 cp terraform-azuread-ms365-hass/examples/single_service .
 
 az login # only needs to be run when *not* using Azure Cloud Shell
-
-# this command will fetch the Tenant ID, which is needed for the Terraform azuread provider and used in the next step
-az account show --query tenantId -o tsv
 ```
 
 Create a new file in the same directory and add the following to it (updating `selected_service` if needed):
 
 ```hcl
-tenant_id        = "tenant-id-from-az-command"
 selected_service = "todo"
 ```
 
-Save the file as `ms365.tfvars`
+> [!TIP]
+> If you wish to configure any other [variables](./variables.tf), the `.tfvars` file is where to do so!
+
+**Save the file as `ms365.tfvars`**
 
 After confirming, run the following commands to create your infra:
 
