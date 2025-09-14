@@ -39,8 +39,8 @@ You can choose to set this up in either Azure Cloud Shell (easiest, but may have
 
 #### Option 1: Azure Cloud Shell
 
-**Pros:** No software installation, always up-to-date tools, integrated authentication
-**Cons:** Minimal storage costs for Cloud Shell usage (~$1-2/month typical)
+**Pros:** No software installation, always up-to-date tools, integrated authentication  
+**Cons:** Minimal storage costs for Cloud Shell usage (~$1-2/month typical)  
 
 Start by clicking this button or link to [Azure Cloud Shell](https://shell.azure.com)
 
@@ -50,7 +50,6 @@ Start by clicking this button or link to [Azure Cloud Shell](https://shell.azure
 
 #### Option 2: Locally Installed (free)
 
-<!-- TODO -->
 Download the following tools and make them accessible to your shell:
 
 - [terraform](https://developer.hashicorp.com/terraform/install) (>= 1.9)
