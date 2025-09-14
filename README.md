@@ -1,13 +1,11 @@
 # terraform-azuread-ms365-hass
 
 > Infrastructure as Code to assist with setup for @RogerSelwyn's MS365 Home Assistant integrations - deploy from Azure Cloud Shell or locally!
-
-
 > [!NOTE]
 > **Cost Disclaimer**
 >
 > This module creates Azure AD resources that may incur costs depending on your Azure subscription and licensing. While Azure AD Basic features are typically included with most subscriptions, premium features, API call volumes, or specific tenant configurations might result in charges.
-> 
+>
 > **The maintainers of this module are not responsible for any Azure costs incurred by using this Terraform configuration.** Please review your Azure subscription billing and Azure AD pricing before deployment. Monitor your Azure consumption through the Azure portal.
 
 ## ✨ Features
@@ -25,7 +23,8 @@
 
 ```hcl
 module "ms365_hass_calendar" {
-  source = "codycodes/ms365-hass/azuread"
+  source  = "codycodes/ms365-hass/azuread"
+  version = "~>1.0"
 
   selected_service = "calendar"
 }
