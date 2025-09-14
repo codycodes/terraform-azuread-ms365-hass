@@ -1,8 +1,3 @@
-variable "tenant_id" {
-  type    = string
-  default = null
-}
-
 variable "sign_in_audience" {
   type        = string
   description = <<-EOT
