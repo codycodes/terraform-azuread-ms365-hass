@@ -68,7 +68,7 @@ az login
 #### Shared Setup Steps
 
 ```shell
-# this is just an easy way to fetch the code to bootstrap using the module - you can also check the examples folder on this repo if you prefer
+# this is just an easy way to fetch the example code - you can also directly download the repo as a zip if you prefer
 git clone https://github.com/codycodes/terraform-azuread-ms365-hass.git
 
 # choose which template you want to use from the examples directory to a directory of your choosing
@@ -77,35 +77,8 @@ cp terraform-azuread-ms365-hass/examples/single_service .
 az login # only needs to be run when *not* using Azure Cloud Shell
 ```
 
-Create a new file in the same directory and add the following to it (updating `selected_service` if needed):
-
-```hcl
-selected_service = "todo"
-```
-
-> [!TIP]
-> If you wish to configure any other [variables](./variables.tf), the `.tfvars` file is where to do so!
-
-**Save the file as `ms365.tfvars`**
-
-After confirming, run the following commands to create your infra:
-
-```shell
-terraform init
-
-terraform apply -var-file="ms365.tfvars" -auto-approve
-```
-
-To fetch the client secret you can run:
-
-```shell
-terraform output client_secret
-```
-
-You can now follow the instructions on the [Authentication](https://rogerselwyn.github.io/MS365-ToDo/authentication.html) page of your respective integration(s) to set them up in Home Assistant.
-
-> [!TIP]
-> If any changes are needed after the initial infrastructure apply (e.g. adding to `redirect_uris`, simply run the `terraform apply` command again after updating the relevant `.tf` or `.tfvars` files)
+**After downloading the code, please continue with the README on how to deploy: [examples/multi_service/README.md](./examples/multi_service/README.md)
+**
 
 ## FAQ
 
