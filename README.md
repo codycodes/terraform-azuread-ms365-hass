@@ -59,7 +59,7 @@ Download the following tools and make them accessible to your shell:
 Run the following command & follow steps as needed to auth to Azure
 
 > [!NOTE]
-> If you are using a sovereign cloud, you may need to run `az cloud set -n NameOfCloud` as referenced [here](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/sovereign-clouds).
+> If you are using a sovereign cloud, you may need to run `az cloud set -n NameOfCloud` as referenced in the [az cli sovereign cloud docs](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/sovereign-clouds).
 
 ```shell
 az login
