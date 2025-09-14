@@ -26,7 +26,6 @@ This example shows how to configure one or multiple Microsoft 365 services.
    terraform output client_id_and_secret
 ```
 
-5. You can now follow the instructions on the [Authentication](https://rogerselwyn.github.io/MS365-ToDo/authentication.html) page of your respective integration(s) to set them up in Home Assistant.
-
+**You can now follow the instructions on the [Authentication](https://rogerselwyn.github.io/MS365-ToDo/authentication.html) page of your respective integration(s) to set them up in Home Assistant.**
 > [!TIP]
 > If any changes are needed after the initial infrastructure apply (e.g. adding to `redirect_uris`, simply run the `terraform apply` command again after updating the relevant `.tf` or `.tfvars` files)
