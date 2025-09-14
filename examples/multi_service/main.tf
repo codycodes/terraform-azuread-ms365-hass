@@ -9,7 +9,7 @@ terraform {
 }
 
 module "ms365_hass" {
-  for_each = var.services
+  for_each = var.selected_services
 
   source  = "codycodes/ms365-hass/azuread"
   version = "~>1.0"

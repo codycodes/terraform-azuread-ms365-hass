@@ -1,4 +1,4 @@
-variable "services" {
+variable "selected_services" {
   type        = set(string)
   description = "Services to select for application configuration (todo, mail, calendar, teams, contacts)"
   default = [
