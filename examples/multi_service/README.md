@@ -22,7 +22,7 @@ This example shows how to configure one or multiple Microsoft 365 services.
 
 ```shell
    terraform init
-   terraform apply -auto-approve -var-file="ms365.tfvars"
+   terraform apply -var-file="ms365.tfvars"
    terraform output client_id_and_secret
 ```
 
