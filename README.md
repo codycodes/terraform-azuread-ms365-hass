@@ -67,14 +67,11 @@ az login
 
 #### Shared Setup Steps
 
+Start by fetching the code from the `examples/multi_service` folder
+
 ```shell
 # this is just an easy way to fetch the example code - you can also directly download the repo as a zip if you prefer
 git clone https://github.com/codycodes/terraform-azuread-ms365-hass.git
-
-# choose which template you want to use from the examples directory to a directory of your choosing
-cp terraform-azuread-ms365-hass/examples/single_service .
-
-az login # only needs to be run when *not* using Azure Cloud Shell
 ```
 
 **After downloading the code, please continue with the README on how to deploy: [examples/multi_service/README.md](./examples/multi_service/README.md)**
