@@ -1,6 +1,6 @@
 # terraform-azuread-ms365-hass
 
-<ins>Infrastructure-as-Code to assist with setup for @RogerSelwyn's MS365 Home Assistant integrations - deploy from Azure Cloud Shell or locally!</ins>
+**Infrastructure-as-Code to assist with setup for @RogerSelwyn's MS365 Home Assistant integrations - deploy from Azure Cloud Shell or locally!**
 
 > [!NOTE]
 > **Cost Disclaimer**
