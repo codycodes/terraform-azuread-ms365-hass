@@ -77,13 +77,32 @@ cp terraform-azuread-ms365-hass/examples/single_service .
 az login # only needs to be run when *not* using Azure Cloud Shell
 ```
 
-**After downloading the code, please continue with the README on how to deploy: [examples/multi_service/README.md](./examples/multi_service/README.md)
-**
+**After downloading the code, please continue with the README on how to deploy: [examples/multi_service/README.md](./examples/multi_service/README.md)**
 
 ## FAQ
 
-### How About Auto-Rotation?
+### How Does Auto-Rotation Work?
 
-<!-- TODO -->
+This module implements an auto-rotation of the client secret (as they have a maximum expiry of *two years*) while allowing for a defined "grace period" window in which the secret should be considered "rotate-able" (meaning a new one will be generated). From that point forward, the cycle restarts.
+
+The benefit of the grace period is that you get a window in which you can decide *when* you want to perform secret rotation prior to the actual secret expiring.
+
+Here's some ascii showing what the defaults do:
+
+```text
+Day 0    Day 365                Day 730
+ │         │                      │
+ │    [Rotation Window Opens]  [Secret Expires]
+ │         │<---- 365 days ---->│
+ │<------- 730 days ------------->│
+```
+
+> ![IMPORTANT]
+> Terraform needs to be executed in order to determine whether the token needs to be rotated and to optionally perform rotation.
+
+### How Can I Remove The Resources Created by Terraform?
+
+To remove, you can simply `cd` to where your Terraform is stored and run `terraform destroy`.
+For more info please refer to the [command reference](https://developer.hashicorp.com/terraform/cli/commands/destroy)
 
 Happy Automating! 🤖
