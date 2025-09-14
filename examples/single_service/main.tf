@@ -8,7 +8,7 @@ terraform {
   }
 }
 
-module "ms365_hass_calendar" {
+module "ms365_hass" {
   source  = "codycodes/ms365-hass/azuread"
   version = "~>1.0"
 

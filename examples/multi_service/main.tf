@@ -8,7 +8,7 @@ terraform {
   }
 }
 
-module "ms365_hass_calendar" {
+module "ms365_hass" {
   for_each = var.services
 
   source  = "codycodes/ms365-hass/azuread"
