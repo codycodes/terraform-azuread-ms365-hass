@@ -4,6 +4,9 @@ This example shows how to configure one or multiple Microsoft 365 services.
 
 ## Usage
 
+> [!TIP]
+> Ensure you're logged in with `az` or have provider configuration setup for `azuread`
+
 1. Copy this entire directory to another location
 2. Copy `ms365.tfvars.example` to `ms365.tfvars`
 3. Modify `ms365.tfvars` with your desired service(s) (all services provisioned by default) and additional configuration (if any)
