@@ -94,7 +94,7 @@ Day 0    Day 365                Day 730
  │<------- 730 days ------------->│
 ```
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > Terraform needs to be executed in order to determine whether the token needs to be rotated and to optionally perform rotation.
 
 ### How Can I Remove The Resources Created by Terraform?
