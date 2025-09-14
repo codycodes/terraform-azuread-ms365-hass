@@ -1,6 +1,6 @@
 output "client_id_and_secret" {
   sensitive = true
-  value     = { for name, instance in module.ms365_hass : name => { id = instance.client_id, secret = instance.client_secret } }
+  value     = { for name, instance in module.ms365_hass : name => { client_id = instance.client_id, secret = instance.client_secret } }
 }
 
 output "disclaimer" {
