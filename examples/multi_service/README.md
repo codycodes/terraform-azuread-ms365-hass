@@ -1,4 +1,4 @@
-# Multi-Service Example
+# Multi-Service Example for MS365 Hass
 
 This example shows how to configure one or multiple Microsoft 365 services.
 
