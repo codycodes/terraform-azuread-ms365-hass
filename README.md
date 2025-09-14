@@ -106,4 +106,18 @@ Day 0    Day 365                Day 730
 To remove, you can simply `cd` to where your Terraform is stored and run `terraform destroy`.
 For more info please refer to the [command reference](https://developer.hashicorp.com/terraform/cli/commands/destroy)
 
+## Troubleshooting
+
+### I'm Receiving a 409 Error - What Can I Do?
+
+I consistently received a [409 conflict](http://http.cat/409) stating `Error_MsaAppDoesNotExist` when creating the `contacts` service for this application (but you may see it for any of the other services as well) for a period of ten or so minutes.
+
+Unfortunately, while I've confirmed all services are configured appropriately through Terraform & setting up their respective MS365 integrations, race-conditions with provisioning are possible and are on the provider's (azuread's) purview.
+
+While this may not be the answer you want to hear, taking a coffee break and returning, re-running `terraform apply` will hopefully resolve any issues with provisioning you may be facing. Unless of course there's an outage, but hopefully that's a problem for another day 🤠.
+
+### Still Not Working?
+
+Please [create an issue](https://github.com/codycodes/terraform-azuread-ms365-hass/issues/new) and I'll respond when able to assist with troubleshooting. If you can get a working configuration by manually setting up per Roger's instructions, please share that in the issue and it will help improve the IaC for everyone!
+
 Happy Automating! 🤖
