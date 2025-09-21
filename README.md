@@ -42,7 +42,7 @@ You can choose to set this up in either Azure Cloud Shell (easiest, but may have
 **Pros:** No software installation, always up-to-date tools, integrated authentication  
 **Cons:** Minimal storage costs for Cloud Shell usage (~$1-2/month typical)  
 
-Start by clicking this button or link to [Azure Cloud Shell](https://shell.azure.com)
+Start by clicking this button or link to [Azure Cloud Shell](https://shell.azure.com) **and choose Bash as the shell if prompted**.
 
 [![Launch Azure Cloud Shell](https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com)
 
