@@ -104,13 +104,20 @@ For more info please refer to the [command reference](https://developer.hashicor
 
 ## Troubleshooting
 
-### I'm Receiving a 409 Error - What Can I Do?
+## I'm Receiving a 409 Error - What Can I Do?
 
-I consistently received a [409 conflict](http://http.cat/409) stating `Error_MsaAppDoesNotExist` when creating the `contacts` service for this application (but you may see it for any of the other services as well) for a period of ten or so minutes.
+**Error:** `Error_MsaAppDoesNotExist` or similar 409 conflict errors during `terraform apply`
 
-Unfortunately, while I've confirmed all services are configured appropriately through Terraform & setting up their respective MS365 integrations, race-conditions with provisioning are possible and are on the provider's (azuread's) purview.
+**Root cause:** Azure AD application provisioning can take time to propagate across Microsoft's infrastructure. This creates race conditions where Terraform tries to configure permissions / create client secrets before the application is fully provisioned in all Azure AD subsystems.
 
-While this may not be the answer you want to hear, taking a coffee break and returning, re-running `terraform apply` will hopefully resolve any issues with provisioning you may be facing. Unless of course there's an outage, but hopefully that's a problem for another day 🤠.
+**Solution:**
+1. Wait 5-10 minutes for Azure AD propagation to complete
+2. Re-run `terraform apply`
+3. The resources should create successfully on the retry
+
+**Why this happens:** This is a known behavior with Azure AD's eventual consistency model and is outside the control of the azuread Terraform provider. While all resources are configured correctly in your Terraform code, Microsoft's backend provisioning timing causes these temporary conflicts.
+
+**Note:** If the error persists after 15-20 minutes, check the [Azure Status page](https://status.azure.com/) for any ongoing service incidents.
 
 ### Still Not Working?
 
