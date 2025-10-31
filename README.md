@@ -22,16 +22,7 @@
 
 ### Basic Usage
 
-```hcl
-module "ms365_hass_calendar" {
-  source  = "codycodes/ms365-hass/azuread"
-  version = "~>1.0"
-
-  selected_service = "calendar"
-}
-```
-
-Please see the [examples](./examples) folder for more configurations, or take a look at the [variables](./variables.tf) page to see the inputs supported by this module.
+Please see the [examples](./examples) folder for a configuration example (that calls this module), take a look at the a fancy rendering of the inputs [on the module's Terraform Registry page](https://registry.terraform.io/modules/codycodes/ms365-hass/azuread/latest?tab=inputs) or peep the [variables](./variables.tf) page directly to see the inputs supported by this module.
 
 ### Setup
 
