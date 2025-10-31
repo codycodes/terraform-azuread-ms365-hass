@@ -57,6 +57,10 @@ locals {
 
 data "azuread_client_config" "current" {}
 
+locals {
+  assigned_permissions = var.preassign_permissions ? concat(local.permissions.general, local.permissions[var.selected_service]) : []
+}
+
 resource "azuread_application" "m365_integration" {
   display_name     = "Home Assistant MS365 ${var.selected_service} Integration"
   description      = "Created via Terraform"
@@ -65,13 +69,18 @@ resource "azuread_application" "m365_integration" {
   api {
     requested_access_token_version = 2 # required for some sign_in_audience & recommended due to backwards compat w/v1
   }
-  required_resource_access {
-    resource_app_id = "00000003-0000-0000-c000-000000000000" # microsoft graph
-    dynamic "resource_access" {
-      for_each = var.custom_permissions == null ? concat(local.permissions.general, local.permissions[var.selected_service]) : tolist(var.custom_permissions)
-      content {
-        id   = resource_access.value
-        type = "Scope"
+  dynamic "required_resource_access" {
+    for_each = length(local.assigned_permissions) > 0 ? [1] : []
+
+    content {
+      resource_app_id = "00000003-0000-0000-c000-000000000000" # microsoft graph
+      dynamic "resource_access" {
+        for_each = local.assigned_permissions
+
+        content {
+          id   = resource_access.value
+          type = "Scope"
+        }
       }
     }
   }

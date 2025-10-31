@@ -38,10 +38,10 @@ variable "rotation_window_days" {
   default     = 365
 }
 
-variable "custom_permissions" {
-  type        = set(string)
-  description = "Custom permissions to use instead of local.permissions"
-  default     = null
+variable "preassign_permissions" {
+  type        = bool
+  description = "Determines whether permissions for the app should be pre-assigned (greatest privilege) or assigned at auth-time (least privilege)"
+  default     = false
 }
 
 variable "owners" {
